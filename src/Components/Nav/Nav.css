@@ -1,0 +1,39 @@
+.nav-container {
+	height: 72px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: #1d2020;
+	margin: 0;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.26);
+	z-index: 999;
+}
+
+.nav-left {
+	display: flex;
+	align-items: center;
+}
+
+.nav-right {
+	margin-right: 40px;
+}
+
+.nav-link {
+	color: #e7e6e7;
+	font-size: 32px;
+	text-decoration: none;
+	font-weight: 600;
+}
+
+.flash-logo {
+	height: 40px;
+	margin-left: 20px;
+}
+
+.flash-logo-text {
+	font-family: 'Bangers', cursive;
+	margin: 0 10px;
+	font-size: 60px;
+	color: #e7e6e7;
+	letter-spacing: 1px;
+}

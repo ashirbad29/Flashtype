@@ -1,4 +1,5 @@
 import React from 'react';
+import Nav from '../Nav/Nav';
 import './App.css';
 
 class App extends React.Component {
@@ -6,7 +7,7 @@ class App extends React.Component {
 		return (
 			<div className='app'>
 				{/* Nav */}
-				<h1>This is the nav</h1>
+				<Nav />
 				{/* Landing Page */}
 
 				{/* Challenge section */}
