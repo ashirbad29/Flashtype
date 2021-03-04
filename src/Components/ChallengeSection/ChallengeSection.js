@@ -4,7 +4,14 @@ import 'aos/dist/aos.css';
 import './ChallengeSection.css';
 import TestContainer from '../TestContainer/TestContainer';
 
-const ChallengeSection = () => {
+const ChallengeSection = ({
+	selectedParagraph,
+	timerStarted,
+	timeRemaining,
+	words,
+	characters,
+	wpm,
+}) => {
 	useEffect(() => {
 		AOS.init();
 		AOS.refresh();
@@ -14,7 +21,14 @@ const ChallengeSection = () => {
 			<h1 data-aos='fade-down' className='challenge-section-header'>
 				Take a Speed Test Now!
 			</h1>
-			<TestContainer words={4} charcters={14} wpm={4} />
+			<TestContainer
+				selectedParagraph={selectedParagraph}
+				timerStarted={timerStarted}
+				timeRemaining={timeRemaining}
+				words={words}
+				characters={characters}
+				wpm={wpm}
+			/>
 		</div>
 	);
 };
