@@ -4,19 +4,23 @@ import TypingChallengeContainer from '../TypingChallengeContainer/TypingChalleng
 import './TestContainer.css';
 
 const TestContainer = ({ words, charcters, wpm }) => {
+	const timeRemaining = 10;
+
 	return (
 		<div className='test-container'>
-			{/* <div className='try-again-container'>
-				<TryAgain words={words} charcters={charcters} wpm={wpm} />
-			</div> */}
-
-			<div className='typing-challenge-container'>
-				<TypingChallengeContainer
-					words={words}
-					characters={charcters}
-					wpm={wpm}
-				/>
-			</div>
+			{timeRemaining > 0 ? (
+				<div className='typing-challenge-container'>
+					<TypingChallengeContainer
+						words={words}
+						characters={charcters}
+						wpm={wpm}
+					/>
+				</div>
+			) : (
+				<div className='try-again-container'>
+					<TryAgain words={words} charcters={charcters} wpm={wpm} />
+				</div>
+			)}
 		</div>
 	);
 };
