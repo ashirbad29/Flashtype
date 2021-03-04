@@ -6,6 +6,7 @@ import TestContainer from '../TestContainer/TestContainer';
 
 const ChallengeSection = ({
 	selectedParagraph,
+	testInfo,
 	timerStarted,
 	timeRemaining,
 	words,
@@ -23,6 +24,7 @@ const ChallengeSection = ({
 			</h1>
 			<TestContainer
 				selectedParagraph={selectedParagraph}
+				testInfo={testInfo}
 				timerStarted={timerStarted}
 				timeRemaining={timeRemaining}
 				words={words}

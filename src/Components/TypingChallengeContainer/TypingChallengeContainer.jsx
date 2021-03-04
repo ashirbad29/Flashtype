@@ -5,6 +5,7 @@ import './TypingChallengeContainer.css';
 
 const TypingChallengeContainer = ({
 	selectedParagraph,
+	testInfo,
 	timerStarted,
 	timeRemaining,
 	words,
@@ -28,6 +29,7 @@ const TypingChallengeContainer = ({
 			<div className='typewriter-container'>
 				<TypingChallenge
 					selectedParagraph={selectedParagraph}
+					testInfo={testInfo}
 					timerStarted={timerStarted}
 					timeRemaining={timeRemaining}
 				/>

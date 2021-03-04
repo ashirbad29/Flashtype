@@ -5,6 +5,7 @@ import './TestContainer.css';
 
 const TestContainer = ({
 	selectedParagraph,
+	testInfo,
 	timerStarted,
 	timeRemaining,
 	words,
@@ -17,6 +18,7 @@ const TestContainer = ({
 				<div className='typing-challenge-container'>
 					<TypingChallengeContainer
 						selectedParagraph={selectedParagraph}
+						testInfo={testInfo}
 						timerStarted={timerStarted}
 						timeRemaining={timeRemaining}
 						words={words}
