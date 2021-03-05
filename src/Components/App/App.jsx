@@ -30,6 +30,10 @@ class App extends React.Component {
 		this.setState({ testInfo });
 	}
 
+	handleUserInput = input => {
+		console.log(input);
+	};
+
 	render() {
 		console.log(this.state.testInfo);
 		return (
@@ -49,6 +53,7 @@ class App extends React.Component {
 					words={this.state.words}
 					characters={this.state.characters}
 					wpm={this.state.wpm}
+					handleUserInput={this.handleUserInput}
 				/>
 
 				{/* Footer */}
