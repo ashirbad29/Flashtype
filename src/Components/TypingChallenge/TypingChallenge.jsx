@@ -7,7 +7,6 @@ const TypingChallenge = ({
 	timerStarted,
 	handleUserInput,
 }) => {
-	console.log('inside typing challenge container', testInfo);
 	return (
 		<div className='typing-challenge'>
 			<div className='timer-container'>

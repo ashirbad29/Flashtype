@@ -7,18 +7,20 @@ import './App.css';
 
 const url = 'http://metaphorpsum.com/paragraphs/1/9';
 
-class App extends React.Component {
-	state = {
-		selectedParagraph: 'Hello World',
-		testInfo: [],
-		timerStarted: false,
-		timeRemaining: 60,
-		words: 0,
-		characters: 0,
-		wpm: 0,
-	};
+const defaultState = {
+	selectedParagraph: '',
+	testInfo: [],
+	timerStarted: false,
+	timeRemaining: 60,
+	words: 0,
+	characters: 0,
+	wpm: 0,
+};
 
-	componentDidMount() {
+class App extends React.Component {
+	state = defaultState;
+
+	fetchNewParagraph = () => {
 		fetch(url)
 			.then(response => response.text())
 			.then(data => {
@@ -28,8 +30,12 @@ class App extends React.Component {
 					testLetter: letter,
 					status: 'notAttempted',
 				}));
-				this.setState({ testInfo, selectedParagraph: data });
+				this.setState({ ...defaultState, testInfo, selectedParagraph: data });
 			});
+	};
+
+	componentDidMount() {
+		this.fetchNewParagraph();
 	}
 
 	startTimer = () => {
@@ -91,8 +97,11 @@ class App extends React.Component {
 		});
 	};
 
+	startAgain = () => {
+		this.fetchNewParagraph();
+	};
+
 	render() {
-		console.log(this.state.testInfo);
 		return (
 			<div className='app'>
 				{/* Nav */}
@@ -111,6 +120,7 @@ class App extends React.Component {
 					characters={this.state.characters}
 					wpm={this.state.wpm}
 					handleUserInput={this.handleUserInput}
+					startAgain={this.startAgain}
 				/>
 
 				{/* Footer */}

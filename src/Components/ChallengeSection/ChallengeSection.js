@@ -13,6 +13,7 @@ const ChallengeSection = ({
 	characters,
 	wpm,
 	handleUserInput,
+	startAgain,
 }) => {
 	useEffect(() => {
 		AOS.init();
@@ -32,6 +33,7 @@ const ChallengeSection = ({
 				characters={characters}
 				wpm={wpm}
 				handleUserInput={handleUserInput}
+				startAgain={startAgain}
 			/>
 		</div>
 	);
