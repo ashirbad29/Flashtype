@@ -19,19 +19,76 @@ class App extends React.Component {
 	};
 
 	componentDidMount() {
-		// fetch(url)
-		// 	.then(response => response.text())
-		// 	.then(data => this.setState({ selectedParagraph: data }));
-		const paragraphArray = this.state.selectedParagraph.split('');
-		const testInfo = paragraphArray.map(letter => ({
-			testLetter: letter,
-			status: 'notAttempted',
-		}));
-		this.setState({ testInfo });
+		fetch(url)
+			.then(response => response.text())
+			.then(data => {
+				this.setState({ selectedParagraph: data });
+				const paragraphArray = data.split('');
+				const testInfo = paragraphArray.map(letter => ({
+					testLetter: letter,
+					status: 'notAttempted',
+				}));
+				this.setState({ testInfo, selectedParagraph: data });
+			});
 	}
 
+	startTimer = () => {
+		this.setState({ timerStarted: true });
+
+		const timer = setInterval(() => {
+			if (this.state.timeRemaining > 0) {
+				const timeSpent = 60 - this.state.timeRemaining;
+				const dWpm = timeSpent > 0 ? (this.state.words / timeSpent) * 60 : 0;
+
+				this.setState({
+					timeRemaining: this.state.timeRemaining - 1,
+					wpm: parseInt(dWpm),
+				});
+			} else {
+				clearInterval(timer);
+			}
+		}, 1000);
+	};
+
 	handleUserInput = input => {
-		console.log(input);
+		this.state.timerStarted || this.startTimer();
+		const characters = input.length;
+		const words = input.split(' ').length;
+		const index = characters - 1;
+
+		if (index < 0) {
+			this.setState({
+				testInfo: [
+					{
+						testLetter: this.state.testInfo[0].testLetter,
+						status: 'notAttempted',
+					},
+					...this.state.testInfo.slice(1),
+				],
+				characters,
+				words,
+			});
+			return;
+		}
+
+		if (index > this.state.selectedParagraph.length) {
+			this.setState({ characters, words });
+			return;
+		}
+
+		const testInfo = this.state.testInfo;
+		if (!(index === this.state.selectedParagraph.length - 1))
+			testInfo[index + 1].status = 'notAttempted';
+
+		// check for corrct typed letters
+		const isCorrect = input[index] === testInfo[index].testLetter;
+
+		testInfo[index].status = isCorrect ? 'correct' : 'incorrect';
+		this.setState({
+			testInfo,
+			words,
+			characters,
+		});
 	};
 
 	render() {
