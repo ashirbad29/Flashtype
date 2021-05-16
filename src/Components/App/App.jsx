@@ -17,6 +17,8 @@ const defaultState = {
 	wpm: 0,
 };
 
+const defaultPara = `What we don't know for sure is whether or not the literature would have us believe that a lignite song is not but a fahrenheit. Few can name a cauline offer that isn't an unrouged peen. If this was somewhat unclear, an elbow sees a wine as a younger mitten. The purer columnist reveals itself as a knavish run to those who look. Before skirts, men were only craftsmen. The icon is a drawer. One cannot separate refrigerators from unmissed christmases. A voetstoots vacation's addition comes with it the thought that the uncleared alphabet is a climb. Before sociologies, products were only ears.`;
+
 class App extends React.Component {
 	state = defaultState;
 
@@ -31,6 +33,19 @@ class App extends React.Component {
 					status: 'notAttempted',
 				}));
 				this.setState({ ...defaultState, testInfo, selectedParagraph: data });
+			})
+			.catch(() => {
+				this.setState({ selectedParagraph: defaultPara });
+				const paragraphArray = defaultPara.split('');
+				const testInfo = paragraphArray.map(letter => ({
+					testLetter: letter,
+					status: 'notAttempted',
+				}));
+				this.setState({
+					...defaultState,
+					testInfo,
+					selectedParagraph: defaultPara,
+				});
 			});
 	};
 
