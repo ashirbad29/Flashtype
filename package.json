@@ -1,6 +1,6 @@
 {
-	"name": "flashtype",
 	"homepage": "https://ashirbad29.github.io/Flashtype",
+	"name": "flashtype",
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
